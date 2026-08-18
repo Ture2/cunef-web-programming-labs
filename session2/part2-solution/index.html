@@ -1,0 +1,111 @@
+<!--
+  index.html — Session 6 Lab, Part 2 (REFERENCE SOLUTION)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+
+  REFERENCE ONLY — do not copy for your own submission.
+  This is the Riverside FC page from the Session 3 lab
+  (example_football_club.html), now styled in Session 6. The semantic
+  structure and content are unchanged; the only additions are a
+  <link rel="stylesheet"> and a few class hooks (.site-header, .card,
+  .site-footer) so the CSS can target elements cleanly. No inline styles.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside FC — Official Club Homepage</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>Riverside FC</h1>
+      <p>Founded 1974 · Home of Riverside Football Club</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#news">News</a></li>
+        <li><a href="#fixtures">Fixtures</a></li>
+        <li><a href="#squad">Squad</a></li>
+        <li><a href="#tickets" title="Buy match tickets online">Tickets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="news">
+      <h2>Latest News</h2>
+
+      <article class="card">
+        <h3>Riverside seal dramatic 2-1 win over Ashford Town</h3>
+        <p>
+          <strong>Riverside FC</strong> came from behind on Saturday to beat
+          Ashford Town 2-1 at home, with a stoppage-time winner from midfielder
+          <em>Sofia Marsh</em> sending the crowd into raptures.
+        </p>
+        <p>
+          Read the <a href="/news/riverside-vs-ashford-report">full match report</a>
+          or see <a href="/gallery/matchday-12">photos from matchday 12</a>.
+        </p>
+        <img src="match-highlight.jpg" alt="Sofia Marsh celebrating the winning goal against Ashford Town" width="640" height="360">
+      </article>
+
+      <article class="card">
+        <h3>New training kit unveiled for next season</h3>
+        <p>
+          The club has revealed its new training kit ahead of the
+          <span>2026/27</span> season, produced in partnership with the club's
+          long-standing kit sponsor.
+        </p>
+      </article>
+    </section>
+
+    <section id="fixtures">
+      <h2>Upcoming Fixtures</h2>
+      <ul>
+        <li>Sat 12 Sep — Riverside FC <strong>vs</strong> Millbrook United (Home, 15:00)</li>
+        <li>Sat 19 Sep — Oakfield Rovers <strong>vs</strong> Riverside FC (Away, 15:00)</li>
+        <li>Sat 26 Sep — Riverside FC <strong>vs</strong> Castlegate Athletic (Home, 15:00)</li>
+      </ul>
+      <p>
+        See the <a href="/fixtures/full-season">full season fixture list</a> for
+        every match this year.
+      </p>
+    </section>
+
+    <section id="squad">
+      <h2>First Team Squad</h2>
+      <ol>
+        <li>Elena Ruiz — Goalkeeper</li>
+        <li>Marcus Webb — Defender</li>
+        <li>Sofia Marsh — Midfielder</li>
+        <li>Tomás Ibarra — Forward</li>
+      </ol>
+      <p>View the <a href="/squad/full-roster">full roster</a> with player profiles.</p>
+    </section>
+
+    <aside class="shop">
+      <h2>Club Shop</h2>
+      <p>
+        The new home shirt is now available in the
+        <a href="/shop/home-kit">club shop</a>.
+      </p>
+      <img src="home-kit.jpg" alt="Riverside FC home shirt, red and white stripes" width="200" height="240">
+    </aside>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Riverside FC. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

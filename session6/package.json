@@ -1,0 +1,14 @@
+{
+  "name": "tasks-api-models-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Session 22 lab — Tasks API relational data layer with node-postgres (parameterized models). Block II, Week 8, G247 CUNEF. Set DATABASE_URL to a Postgres connection string in real use.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --watch src/server.js",
+    "db:schema": "psql \"$DATABASE_URL\" -f schema.sql"
+  },
+  "dependencies": {
+    "pg": "^8.12.0"
+  }
+}
