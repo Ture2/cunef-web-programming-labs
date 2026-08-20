@@ -1,47 +1,15 @@
-# Riverside FC — Session 34 worked example (Hooks in Practice)
+# REFERENCE ONLY — do not copy for your own submission.
 
-> **REFERENCE ONLY** — this folder is a read-only worked example.
-> Do not copy it for your own submission.
+This worked example keeps the Block I Riverside FC look and fetches fixtures and squad data from the Block II REST API through Vite's `/api` proxy.
 
-Evolves the Session 32 static example: hard-coded data is replaced by
-`useEffect` + `fetch` calls against the Block II Riverside API.
+Start the backend first:
 
-## Prerequisites
-
-Start the Block II backend first (in a separate terminal):
-
-```bash
-cd lab-sessions/session7/riverside-example
-npm install
-npm start   # listens on :3000
+```powershell
+cd lab-sessions\session7\riverside-example; npm install; npm start  # :3000
 ```
 
-## Running this example
+Then start this app:
 
-```bash
-npm install
-npm run dev   # Vite dev server with /api proxy → :3000
+```powershell
+npm install; npm run dev
 ```
-
-Open <http://localhost:5173>. Fixtures and squad are loaded from the live API.
-
-## What this example shows
-
-| File | Teaching point |
-| --- | --- |
-| `src/api.js` | Fetch helpers — separate "how" from "what" |
-| `src/FixtureList.jsx` | Three-state pattern: `data / loading / error` + `useEffect(fn, [])` |
-| `src/SquadList.jsx` | Same three-state pattern, different endpoint |
-| `vite.config.js` | Dev proxy `/api` → `http://localhost:3000` (avoids CORS) |
-
-## How the proxy works
-
-`/api/fixtures` → Vite rewrites to `http://localhost:3000/fixtures`. The
-browser never sees a cross-origin request, so no CORS headers are needed on
-the backend during development.
-
-## Next step
-
-Session 39 (`session10/riverside-example`) adds `react-router-dom` pages,
-`AuthContext` with a real login against `POST /api/auth/login`, and a
-protected Tickets page.

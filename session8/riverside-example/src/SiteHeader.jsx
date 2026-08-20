@@ -1,23 +1,27 @@
 // REFERENCE ONLY — do not copy for your own submission.
-// See lab-sessions/session8/Session_32_Lab_First_React_Components.md
+// Shared single-page header matching the Block I Riverside FC navigation.
 
-/*
-  SiteHeader.jsx — Riverside FC example (Session 32 · Static React Components)
-
-  A purely presentational nav bar. Receives no props — the navigation links
-  are fixed for this worked example.
-
-  Teaching point: a component does not have to be stateful to be useful.
-  Extracting SiteHeader keeps App.jsx focused on data and layout.
-*/
+const userIcon = (
+  <svg className="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+    <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
+  </svg>
+);
 
 export default function SiteHeader() {
   return (
-    <header className="site-header">
-      <span className="club-name">Riverside FC</span>
+    <header id="top" className="site-header">
+      <div className="brand">
+        <h1>Riverside FC</h1>
+        <p>Founded 1974 · Home of Riverside Football Club</p>
+      </div>
       <nav>
-        <a href="#fixtures">Fixtures</a>
-        <a href="#squad">Squad</a>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#fixtures">Fixtures</a></li>
+          <li><a href="#squad">Squad</a></li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="#">{userIcon} Login</a></li>
+        </ul>
       </nav>
     </header>
   );

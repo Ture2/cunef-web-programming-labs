@@ -1,56 +1,24 @@
-# Riverside FC — Session 39 worked example (Routing + State)
+# REFERENCE ONLY — do not copy for your own submission.
 
-> **REFERENCE ONLY** — this folder is a read-only worked example.
-> Do not copy it for your own submission.
+This is the full homogenized Riverside FC SPA: Block I visuals and page structure, Block II data fetching, React Router v6, real login, and a protected tickets page.
 
-Evolves the Session 34 fetch example: adds `react-router-dom` SPA routing,
-`AuthContext` with a real JWT login against the Block II API, and a
-protected Tickets page.
-
-## Demo credentials (seeded in the Block II backend)
+Demo logins:
 
 | Email | Password | Role |
 | --- | --- | --- |
-| `ana@example.com` | `password1` | member |
-| `coach@riverside.fc` | `adminpass1` | admin |
+| ana@example.com | password1 | member |
+| coach@riverside.fc | adminpass1 | admin |
 
-## Prerequisites
+Start the backend first:
 
-Start the Block II backend first (in a separate terminal):
-
-```bash
-cd lab-sessions/session7/riverside-example
-npm install
-npm start   # listens on :3000
+```powershell
+cd lab-sessions\session7\riverside-example; npm install; npm start  # :3000
 ```
 
-## Running this example
+Then start this app:
 
-```bash
-npm install
-npm run dev   # Vite dev server with /api proxy → :3000
+```powershell
+npm install; npm run dev
 ```
 
-Open <http://localhost:5173>.
-
-## App structure
-
-```
-/           → Home page (links to Fixtures, Squad, Tickets)
-/fixtures   → Fixtures list (public — no login required)
-/squad      → Squad grid  (public — no login required)
-/login      → Login form  (calls POST /api/auth/login)
-/tickets    → Protected: bounces to /login if not logged in
-```
-
-## What this example shows
-
-| File | Teaching point |
-| --- | --- |
-| `src/App.jsx` | `BrowserRouter > AuthProvider > Routes` nesting |
-| `src/AuthContext.jsx` | `createContext` + `useContext` + real JWT login |
-| `src/Protected.jsx` | `<Navigate replace>` guard pattern |
-| `src/SiteHeader.jsx` | `<NavLink>` active styling; conditional Login/Logout |
-| `src/pages/Login.jsx` | `useNavigate` + `location.state.from` redirect-after-login |
-| `src/pages/Tickets.jsx` | Token from context; fetch with bearer header; buy form |
-| `vite.config.js` | Dev proxy `/api` → `http://localhost:3000` |
+Routes: `/`, `/fixtures`, `/squad`, `/tickets` (protected), `/login`.

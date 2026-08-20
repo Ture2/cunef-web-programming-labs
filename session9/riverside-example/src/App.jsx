@@ -1,30 +1,26 @@
 // REFERENCE ONLY — do not copy for your own submission.
-// See lab-sessions/session9/Session_34_Lab_Hooks_in_Practice.md
+// Single-page Riverside FC React app that fetches Block II API data.
 
-/*
-  App.jsx — Riverside FC example (Session 34 · Hooks in Practice)
-
-  Root component. No longer imports hard-coded data — each list component
-  fetches its own data on mount via useEffect.
-
-  Teaching point: data no longer flows from App via props. Each child
-  owns its own fetch lifecycle. This is fine for a small app; Session 39
-  shows how AuthContext solves the "shared auth state" problem without
-  prop-drilling.
-*/
-
-import SiteHeader from "./SiteHeader.jsx";
-import FixtureList from "./FixtureList.jsx";
-import SquadList from "./SquadList.jsx";
+import FixturesTable from "./FixturesTable";
+import SiteFooter from "./SiteFooter";
+import SiteHeader from "./SiteHeader";
+import SquadByPosition from "./SquadByPosition";
 
 export default function App() {
   return (
     <>
       <SiteHeader />
       <main>
-        <FixtureList />
-        <SquadList />
+        <section id="fixtures">
+          <h2>Fixtures &amp; Results</h2>
+          <FixturesTable />
+        </section>
+        <section id="squad">
+          <h2>First Team Squad</h2>
+          <SquadByPosition />
+        </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

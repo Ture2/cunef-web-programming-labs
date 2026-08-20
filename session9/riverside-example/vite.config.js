@@ -1,8 +1,9 @@
+// REFERENCE ONLY — do not copy for your own submission.
+// Vite config for Session 9 with /api proxied to the Block II backend.
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// The proxy rewrites /api/* → http://localhost:3000/* so the frontend
-// never sees CORS errors when the Block II backend runs on :3000.
 export default defineConfig({
   plugins: [react()],
   server: {

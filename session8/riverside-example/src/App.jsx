@@ -1,33 +1,27 @@
 // REFERENCE ONLY — do not copy for your own submission.
-// See lab-sessions/session8/Session_32_Lab_First_React_Components.md
+// Static single-page Riverside FC React port of fixtures and squad pages.
 
-/*
-  App.jsx — Riverside FC example (Session 32 · Static React Components)
-
-  Root component. Imports hard-coded data from data.js and passes it as props
-  to the two list components. No network calls yet — that is Session 34.
-
-  Teaching points demonstrated here:
-  - Props flow top-down: App owns the data, children only receive it.
-  - Component decomposition: SiteHeader, FixtureList, SquadList each have
-    one job.
-  - One useState lives in FixtureList (the venue filter) — state belongs in
-    the component that needs it.
-*/
-
-import SiteHeader from "./SiteHeader.jsx";
-import FixtureList from "./FixtureList.jsx";
-import SquadList from "./SquadList.jsx";
-import { FIXTURES, SQUAD } from "./data.js";
+import { FIXTURES, SQUAD } from "./data";
+import FixturesTable from "./FixturesTable";
+import SiteFooter from "./SiteFooter";
+import SiteHeader from "./SiteHeader";
+import SquadByPosition from "./SquadByPosition";
 
 export default function App() {
   return (
     <>
       <SiteHeader />
       <main>
-        <FixtureList fixtures={FIXTURES} />
-        <SquadList squad={SQUAD} />
+        <section id="fixtures">
+          <h2>Fixtures &amp; Results</h2>
+          <FixturesTable fixtures={FIXTURES} />
+        </section>
+        <section id="squad">
+          <h2>First Team Squad</h2>
+          <SquadByPosition squad={SQUAD} />
+        </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

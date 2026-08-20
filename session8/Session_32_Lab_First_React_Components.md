@@ -215,19 +215,17 @@ JSX — and be able to explain every line of it.
 
 ## Worked example — Riverside FC
 
-`lab-sessions/session8/riverside-example/` is a read-only reference
-implementation of this session's teaching goals applied to the Riverside FC
-through-line (the same club from your Session 3 HTML lab).
+`lab-sessions/session8/riverside-example/` is a read-only reference implementation of this session's teaching goals. It ports the Block I Riverside FC pages (Session 3 HTML lab) into static React components, using hard-coded data that matches the Block II API seed exactly — so the very same app can switch to live data in Session 34 without any visible change.
 
 **What it contains:**
 
 | File | What it demonstrates |
 | --- | --- |
-| `src/data.js` | Hard-coded fixtures and squad data (no network) |
-| `src/SiteHeader.jsx` | Stateless presentational component |
-| `src/FixtureCard.jsx` + `src/FixtureList.jsx` | Props, `.map()` + `key`, one `useState` venue filter |
-| `src/PlayerCard.jsx` + `src/SquadList.jsx` | Props flowing top-down; component decomposition |
-| `src/App.jsx` | Root component wiring everything together |
+| `src/data.js` | Hard-coded fixtures (3) and squad (9) — identical to the backend seed |
+| `src/SiteHeader.jsx` / `src/SiteFooter.jsx` | Stateless presentational components (Block I header/nav + footer) |
+| `src/FixturesTable.jsx` | Props, `.map()` + `key`, one `useState` venue filter (All/Home/Away) over the Block I fixtures table |
+| `src/SquadByPosition.jsx` | Grouping data by position into the Block I `.squad-grid` of player cards |
+| `src/App.jsx` | Root component composing header, sections, and footer |
 
 Run it with `npm install && npm run dev` inside that folder (no backend
 needed — data is hard-coded). Browse the source to see how the teaching
