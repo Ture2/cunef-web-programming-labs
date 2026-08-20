@@ -1,18 +1,27 @@
 // REFERENCE ONLY — do not copy for your own submission.
-// See lab-sessions/session9/Session_34_Lab_Hooks_in_Practice.md
+// Shared single-page header matching the Block I Riverside FC navigation.
 
-/*
-  SiteHeader.jsx — Riverside FC example (Session 34 · Hooks in Practice)
-  Unchanged from the Session 32 version: a purely presentational nav bar.
-*/
+const userIcon = (
+  <svg className="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+    <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
+  </svg>
+);
 
 export default function SiteHeader() {
   return (
-    <header className="site-header">
-      <span className="club-name">Riverside FC</span>
+    <header id="top" className="site-header">
+      <div className="brand">
+        <h1>Riverside FC</h1>
+        <p>Founded 1974 · Home of Riverside Football Club</p>
+      </div>
       <nav>
-        <a href="#fixtures">Fixtures</a>
-        <a href="#squad">Squad</a>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#fixtures">Fixtures</a></li>
+          <li><a href="#squad">Squad</a></li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="#">{userIcon} Login</a></li>
+        </ul>
       </nav>
     </header>
   );

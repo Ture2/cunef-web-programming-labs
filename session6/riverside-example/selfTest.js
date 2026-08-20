@@ -43,9 +43,9 @@ async function main() {
 
   // ---- squad ----
   const players = await squad.findAll();
-  console.assert(players.length === 4, "squad.findAll -> 4 players");
+  console.assert(players.length === 9, "squad.findAll -> 9 players");
   const newPlayer = await squad.create({ number: 7, name: "Ivy Barnes", position: "Midfielder" });
-  console.assert(newPlayer.id === 5 && newPlayer.number === 7, "squad.create");
+  console.assert(newPlayer.id === 10 && newPlayer.number === 7, "squad.create");
 
   // ---- users ----
   const ana = await users.findByEmail("ana@example.com");

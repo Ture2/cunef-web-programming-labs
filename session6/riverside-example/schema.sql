@@ -57,7 +57,12 @@ INSERT INTO players (number, name, position) VALUES
   (1,  'Elena Ruiz',   'Goalkeeper'),
   (2,  'Marcus Webb',  'Defender'),
   (10, 'Sofia Marsh',  'Midfielder'),
-  (9,  'Tomás Ibarra', 'Forward');
+  (9,  'Tomás Ibarra', 'Forward'),
+  (13, 'Priya Nandal', 'Goalkeeper'),
+  (4,  'Lena Fischer', 'Defender'),
+  (5,  'Diego Alvarez', 'Defender'),
+  (8,  'Aisha Kone', 'Midfielder'),
+  (11, 'Noah Bennett', 'Forward');
 
 INSERT INTO fixtures (opponent, match_date, venue, kickoff) VALUES
   ('Millbrook United',    '2026-09-12', 'Home', '15:00'),

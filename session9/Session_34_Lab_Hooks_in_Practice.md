@@ -207,15 +207,15 @@ JSX — and be able to explain every line of it.
 
 `lab-sessions/session9/riverside-example/` is a read-only reference
 implementation of this session's teaching goals using the Riverside FC
-through-line.
+through-line. It is the same static example from Session 32, now fetching fixtures and squad live from the Block II API — identical visuals, but data now comes over the network.
 
 **What it contains:**
 
 | File | What it demonstrates |
 | --- | --- |
 | `src/api.js` | Fetch helpers — separates "how to call the network" from "what to do with the data" |
-| `src/FixtureList.jsx` | Three-state pattern (`data / loading / error`) + `useEffect(fn, [])` + Refresh button |
-| `src/SquadList.jsx` | Same three-state pattern for a different endpoint |
+| `src/FixturesTable.jsx` | Three-state pattern (`data / loading / error`) + `useEffect` + Refresh button, over the Block I fixtures table |
+| `src/SquadByPosition.jsx` | Same three-state pattern for the `/api/squad` endpoint, grouped by position |
 | `vite.config.js` | Dev proxy `/api` → `http://localhost:3000` (avoids CORS) |
 
 **Prerequisites:** start the Block II backend first:

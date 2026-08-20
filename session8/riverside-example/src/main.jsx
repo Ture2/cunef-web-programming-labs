@@ -1,11 +1,13 @@
 // REFERENCE ONLY — do not copy for your own submission.
-import { StrictMode } from "react";
+// Vite entry point for the static Riverside FC React port.
+
+import React from "react";
 import { createRoot } from "react-dom/client";
+import App from "./App";
 import "./index.css";
-import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <React.StrictMode>
     <App />
-  </StrictMode>
+  </React.StrictMode>
 );

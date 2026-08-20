@@ -241,11 +241,13 @@ against the Block II API, and a protected Tickets page.
 
 | File | Teaching point |
 | --- | --- |
-| `src/AuthContext.jsx` | `createContext` + `useContext` + real JWT login/logout |
-| `src/Protected.jsx` | `<Navigate replace state={{ from }}>` guard |
-| `src/SiteHeader.jsx` | `<NavLink>` active styling; conditional Login/Logout |
-| `src/pages/Login.jsx` | `useNavigate` + redirect-after-login via `location.state.from` |
-| `src/pages/Tickets.jsx` | Token from context; fetch with bearer header; buy form |
+| `src/AuthContext.jsx` | `createContext` + `useContext` + real JWT login/logout (token in `localStorage`) |
+| `src/Protected.jsx` | `<Navigate replace state={{ from }}>` guard on the Tickets route |
+| `src/SiteHeader.jsx` | `<NavLink>` active styling; conditional Login / Log out |
+| `src/pages/Home.jsx` | Block I home-grid hub (news cards, Next Fixture, Squad teaser, Club Shop aside) |
+| `src/pages/Fixtures.jsx` / `src/pages/Squad.jsx` | Reuse the fetched `FixturesTable` / `SquadByPosition` components |
+| `src/pages/Tickets.jsx` + `src/PriceCard.jsx` | Block I price cards + member `GET/POST /api/tickets` (buy form), token from context |
+| `src/pages/Login.jsx` | Block I `.login-card`; `useNavigate` + redirect-after-login via `location.state.from` |
 
 **Prerequisites:** start the Block II backend first:
 

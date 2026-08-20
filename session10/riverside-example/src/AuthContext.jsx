@@ -1,56 +1,42 @@
 // REFERENCE ONLY — do not copy for your own submission.
-// See lab-sessions/session10/Session_39_Lab_Routing_and_State.md
+// Auth context that stores the demo user's email and API bearer token.
 
-/*
-  AuthContext.jsx — Riverside FC example (Session 39 · Routing + State)
-
-  Provides { user, token, login, logout } to the whole component tree.
-  login() calls POST /api/auth/login and stores the returned JWT.
-  logout() clears the state.
-
-  Teaching points:
-  - createContext + useContext centralises auth state without prop-drilling.
-  - The token is kept in component state (not a global variable). When the
-    component re-renders, every consumer re-renders too.
-  - localStorage is used here so the session survives a page refresh. In a
-    production app you would also handle token expiry.
-*/
-
-import { createContext, useContext, useState } from "react";
-import { loginUser } from "./api.js";
+import { createContext, useContext, useMemo, useState } from "react";
+import { loginUser } from "./api";
 
 const AuthContext = createContext(null);
+const STORAGE_KEY = "riverside-auth";
+
+function readStoredAuth() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { user: null, token: "" };
+  } catch {
+    return { user: null, token: "" };
+  }
+}
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(() => localStorage.getItem("rfc_token"));
-  const [user, setUser] = useState(() => {
-    const t = localStorage.getItem("rfc_token");
-    const e = localStorage.getItem("rfc_email");
-    return t && e ? { email: e } : null;
-  });
+  const [auth, setAuth] = useState(readStoredAuth);
 
   async function login(email, password) {
-    const data = await loginUser({ email, password }); // throws on 401
-    setToken(data.token);
-    setUser({ email });
-    localStorage.setItem("rfc_token", data.token);
-    localStorage.setItem("rfc_email", email);
+    const { token } = await loginUser({ email, password });
+    const nextAuth = { user: { email }, token };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextAuth));
+    setAuth(nextAuth);
   }
 
   function logout() {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem("rfc_token");
-    localStorage.removeItem("rfc_email");
+    localStorage.removeItem(STORAGE_KEY);
+    setAuth({ user: null, token: "" });
   }
 
-  return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = useMemo(() => ({ ...auth, login, logout }), [auth]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const value = useContext(AuthContext);
+  if (!value) throw new Error("useAuth must be used inside AuthProvider");
+  return value;
 }
