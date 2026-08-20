@@ -4,10 +4,14 @@
   Wires the pipeline together:
     /health              open liveness check
     /auth/*              open: register + login (no token)
-    /fixtures /squad     behind `auth`; writes also require admin
+    /fixtures /squad     reads are public; writes require admin (auth + requireAdmin)
     /tickets             behind `auth`; controller enforces ownership
 
   Exports the app (no listen) so supertest can drive it in-process.
+
+  NOTE (Block III integration): GET /fixtures and GET /squad are intentionally
+  public so the Session 9 React frontend can fetch them before auth is introduced
+  in Session 10. Writes (POST/PUT/DELETE) remain admin-only.
 */
 
 const express = require("express");
@@ -28,9 +32,10 @@ app.get("/health", (req, res) => {
 // Public authentication endpoints.
 app.use("/auth", authRouter);
 
-// Everything below requires a valid token (auth sets req.user first).
-app.use("/fixtures", auth, fixturesRouter);
-app.use("/squad", auth, squadRouter);
+// /fixtures and /squad: reads are public; writes use auth + requireAdmin (enforced in the router).
+app.use("/fixtures", fixturesRouter);
+app.use("/squad", squadRouter);
+// /tickets always requires a valid token (controller enforces ownership).
 app.use("/tickets", auth, ticketsRouter);
 
 // Central error handler — registered last.

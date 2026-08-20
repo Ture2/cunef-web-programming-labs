@@ -18,8 +18,12 @@ async function login(email, password) {
 }
 
 async function main() {
-  // ---- no token -> 401 ----
-  assert.strictEqual((await request(app).get("/fixtures")).status, 401, "no token -> 401");
+  // ---- public reads require NO token -> 200 ----
+  assert.strictEqual((await request(app).get("/fixtures")).status, 200, "public GET /fixtures -> 200");
+  assert.strictEqual((await request(app).get("/squad")).status, 200, "public GET /squad -> 200");
+
+  // ---- /tickets is still protected: no token -> 401 ----
+  assert.strictEqual((await request(app).get("/tickets")).status, 401, "no token -> 401 on /tickets");
 
   // ---- login as seeded member + admin ----
   const memberToken = await login("ana@example.com", "password1");
@@ -39,7 +43,9 @@ async function main() {
   const p2 = await authM(request(app).get("/fixtures?limit=2&offset=2"));
   assert.strictEqual(p2.body.data[0].id, 3, "offset 2 -> id 3");
 
-  // ---- permissions: member cannot create a fixture (403), admin can (201) ----
+  // ---- permissions: no token gets 401, member gets 403, admin can create ----
+  const noTokenCreate = await request(app).post("/fixtures").send({ opponent: "Riverton AFC", matchDate: "2026-10-03" });
+  assert.strictEqual(noTokenCreate.status, 401, "no token create fixture -> 401");
   const memberCreate = await authM(
     request(app).post("/fixtures").send({ opponent: "Riverton AFC", matchDate: "2026-10-03" })
   );
