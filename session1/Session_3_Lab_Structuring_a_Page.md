@@ -151,5 +151,130 @@ this brief (`example_football_club.html`). It satisfies every item in the
 checklist above and is deliberately unstyled — open it in a browser to see what a
 full-credit *structure-only* submission looks like before you start your own.
 
-Do not copy it directly — your pair must choose your own topic. Use it only to
+That homepage is the hub of a small **multi-page site** used in Part 2 below. The
+sibling pages live in the same folder and are all reachable from the shared `<nav>`:
+
+- `example_football_club_fixtures.html` — a Fixtures & Results page
+- `example_football_club_squad.html` — a First Team Squad page
+- `example_football_club_tickets.html` — a Tickets page
+- `example_football_club_login.html` — a **Member Login** page with a real HTML
+  `<form>` (the starting point for authentication in Block II)
+
+Open the homepage and click through the nav to see how `href` turns a folder of
+separate `.html` files into one navigable site.
+
+Do not copy them directly — your pair must choose your own topic. Use them only to
 see the expected shape and depth of a passing submission.
+
+---
+
+## 10. Part 2 — Building a small multi-page site
+
+In Part 1 you built **one** page and used `href` in two ways: for on-page jumps
+(`href="#fixtures"`) and as placeholders for links you had not built yet
+(`href="/contact"`). A real website is more than one page, and the thing that turns
+a folder of HTML files into a *site* is the `href` attribute connecting them. Part 2
+is where you turn your single page into a small **multi-page site** with a shared
+navigation bar — including a **login page**, your first real HTML form.
+
+### 10.1 Learning objectives
+
+By the end of Part 2 you will be able to:
+
+- Split content across several HTML pages in one folder and link them together.
+- Build a **shared `<nav>`** that appears on every page, so any page can reach any
+  other (relative URLs like `href="squad.html"`).
+- Choose the right kind of `href` value for the job:
+  - a **relative URL** (`squad.html`) to another page in your own site,
+  - a **relative URL + fragment** (`fixtures.html#results`) to jump to a section
+    of another page,
+  - an **absolute URL** (`https://…`) to an external site.
+- Build a **login page** with a semantic HTML `<form>`: `<label>`s bound to typed
+  `<input>`s, and a submit `<button>`.
+
+### 10.2 What to build
+
+Grow the single page from Part 1 into a site of **at least four pages** that share
+one navigation bar. For a football club that is Home + Fixtures + Squad + Tickets +
+Login; for a recipe blog it might be Home + Recipes + a single Recipe + About +
+Login; for a portfolio, Home + Projects + Contact + Login. Choose pages your own
+topic naturally needs — but **one of them must be a Login page** (see §10.3).
+
+Requirements for the site:
+
+1. **A shared nav.** Every page has the same `<nav>` with the same links, each a
+   relative `href` to a sibling file (`index.html`, `fixtures.html`, …). You should
+   be able to start on any page and reach every other page by clicking.
+2. **Real pages, not fragments.** The dedicated pages are separate files
+   (`fixtures.html`), not just `#fixtures` sections of the homepage. Turn the
+   homepage's long sections into short **teasers** that link out to the full page.
+3. **Each page is complete and valid** on its own: same document-setup rules as
+   Part 1 (`<!DOCTYPE html>`, `<html lang="…">`, `<head>` with a `<title>`, and a
+   semantic `<header>` / `<main>` / `<footer>`), with at least two `<section>`s of
+   real (placeholder) content relevant to that page.
+4. **At least one file + fragment link** somewhere (e.g. a homepage teaser linking
+   to `fixtures.html#results`), and **at least one external** absolute-URL link.
+
+### 10.3 The login page (your first HTML form)
+
+Add a `login.html` page whose `<main>` contains a semantic sign-in **form**:
+
+- A `<form>` element wrapping the fields.
+- An **email** field: `<input type="email">` with a matching
+  `<label for="email">` (the label's `for` equals the input's `id`).
+- A **password** field: `<input type="password">` with its own `<label>`, and a
+  `minlength` attribute.
+- A submit **button**: `<button type="submit">Sign in</button>`.
+- Use validation attributes where they fit (`required`, `minlength`).
+
+> **This form is front-end only in Block I.** It has no `action`, submits nowhere,
+> and logs nobody in — clicking *Sign in* does nothing yet. That is expected.
+> Actually checking a password against a server is **authentication**, which you
+> build in **Block II**; this page is the structural starting point. Keep it simple
+> and correct now, and you will wire it up later.
+
+### 10.4 Steps
+
+1. Save your Part 1 file as `index.html` and keep **all** pages in the same folder
+   (relative links assume this).
+2. Write the shared `<nav>` once, correctly, then copy it into every page so the
+   links are identical everywhere.
+3. Create each dedicated page (`fixtures.html`, `squad.html`, …) with its `<head>`
+   and semantic skeleton, filling in real placeholder content.
+4. Replace the homepage's full sections with short teasers that link out
+   (`<a href="fixtures.html">See all fixtures</a>`).
+5. Build `login.html` with the form from §10.3.
+6. In every page's `<footer>`, add a "Back to homepage" link.
+7. Open `index.html` and click through **every** nav link on **every** page. Fix any
+   link that 404s or misspells a filename.
+8. Validate **every** file with the W3C Markup Validator.
+
+### 10.5 Deliverable
+
+- **At least four HTML files** in one folder, sharing an identical `<nav>`, each
+  validated, each with the pair's names in a comment at the top.
+- One of them is a **login page** with a semantic `<form>` (labelled email +
+  password inputs and a submit button).
+- Navigation works by clicking alone — from any page you can reach any other.
+- Pushed to the same shared GitHub repo as Part 1.
+- Still **no CSS and no JavaScript** — this is about structure, `href`, and forms.
+  Styling the site is Session 6; the login form gets validation logic in Session 9.
+
+### 10.6 Self-check before submitting Part 2
+
+- [ ] At least four complete, valid HTML pages in the same folder
+- [ ] An identical shared `<nav>` on every page, using relative `href`s
+- [ ] From any page you can reach every other page by clicking (no 404s)
+- [ ] The homepage uses short teasers that link out to the dedicated pages
+- [ ] At least one file + fragment link (e.g. `fixtures.html#results`)
+- [ ] At least one external link with a full absolute URL (`https://…`)
+- [ ] A `login.html` with a `<form>`: email + password `<input>`s, each with a
+      bound `<label>` (`for`/`id`), and a submit `<button>`
+- [ ] Every file passes the W3C Markup Validator with zero errors
+- [ ] Still no CSS, no JavaScript, no inline `style=""`
+
+> **Reference:** the `example_football_club_*.html` files (homepage + fixtures,
+> squad, tickets, and login) together show exactly this shared-nav, multi-page
+> pattern, and the login page shows the expected form structure.
+
+

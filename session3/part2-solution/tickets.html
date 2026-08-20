@@ -1,0 +1,102 @@
+<!--
+  tickets.html — Session 9 Lab, Part 2 (REFERENCE SOLUTION)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+
+  REFERENCE ONLY — do not copy for your own submission.
+  The Tickets page, styled with the shared styles.css: single-match and
+  season-pass prices become a row of .price-card items. Same structure as
+  example_football_club_tickets.html. No inline styles.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside FC — Tickets</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>Tickets</h1>
+      <p>Match tickets, season passes, and how to buy</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="squad.html">Squad</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="login.html"><svg class="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="single">
+      <h2>Single-match tickets</h2>
+      <p>
+        Tickets for the next home game against <strong>Millbrook United</strong>
+        are on sale now.
+      </p>
+      <ul class="ticket-grid">
+        <li class="price-card">
+          <h3>Standing</h3>
+          <span class="price">&euro;15</span>
+          <p>General terraces</p>
+        </li>
+        <li class="price-card">
+          <h3>Seated</h3>
+          <span class="price">&euro;25</span>
+          <p>Main stand, reserved seat</p>
+        </li>
+        <li class="price-card">
+          <h3>Family</h3>
+          <span class="price">&euro;60</span>
+          <p>2 adults + 2 children</p>
+        </li>
+      </ul>
+      <p>See the full <a href="fixtures.html">fixture list</a> to choose a match.</p>
+    </section>
+
+    <section id="season">
+      <h2>Season passes</h2>
+      <p>
+        A season pass covers every home fixture and includes priority access to
+        cup matches, available until the end of August.
+      </p>
+      <ul class="ticket-grid">
+        <li class="price-card">
+          <h3>Adult</h3>
+          <span class="price">&euro;180</span>
+          <p>All home fixtures</p>
+        </li>
+        <li class="price-card">
+          <h3>Under-18</h3>
+          <span class="price">&euro;90</span>
+          <p>All home fixtures</p>
+        </li>
+        <li class="price-card">
+          <h3>Family</h3>
+          <span class="price">&euro;450</span>
+          <p>2 adults + 2 children</p>
+        </li>
+      </ul>
+      <p>Season-pass holders should <a href="login.html">sign in</a> to renew.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Riverside FC. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Back to homepage</a></li>
+        <li><a href="https://www.uefa.com" title="Opens an external site">UEFA (external)</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

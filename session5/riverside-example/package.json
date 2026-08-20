@@ -1,0 +1,13 @@
+{
+  "name": "riverside-example-crud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Worked example (read-only) — Riverside FC CRUD API on an in-memory store. Applies the Session 18 pattern (routes -> controllers -> data) to the football domain. Block II, G247 CUNEF.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

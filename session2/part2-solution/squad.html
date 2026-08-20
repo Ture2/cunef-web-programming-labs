@@ -1,0 +1,83 @@
+<!--
+  squad.html — Session 6 Lab, Part 2 (REFERENCE SOLUTION)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+
+  REFERENCE ONLY — do not copy for your own submission.
+  The First Team Squad page, styled with the shared styles.css. The player
+  lists become a responsive grid of .player-card items. Same structure as
+  example_football_club_squad.html. No inline styles.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside FC — First Team Squad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>First Team Squad</h1>
+      <p>The 2026/27 first-team roster by position</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="squad.html">Squad</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+        <li><a href="login.html"><svg class="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="goalkeepers">
+      <h2>Goalkeepers</h2>
+      <ul class="squad-grid">
+        <li class="player-card"><span class="num">1</span> Elena Ruiz</li>
+        <li class="player-card"><span class="num">13</span> Priya Nandal</li>
+      </ul>
+    </section>
+
+    <section id="defenders">
+      <h2>Defenders</h2>
+      <ul class="squad-grid">
+        <li class="player-card"><span class="num">2</span> Marcus Webb</li>
+        <li class="player-card"><span class="num">4</span> Lena Fischer</li>
+        <li class="player-card"><span class="num">5</span> Diego Alvarez</li>
+      </ul>
+    </section>
+
+    <section id="midfielders">
+      <h2>Midfielders</h2>
+      <ul class="squad-grid">
+        <li class="player-card"><span class="num">8</span> Aisha Kone</li>
+        <li class="player-card"><span class="num">10</span> Sofia Marsh <strong>(captain)</strong></li>
+      </ul>
+    </section>
+
+    <section id="forwards">
+      <h2>Forwards</h2>
+      <ul class="squad-grid">
+        <li class="player-card"><span class="num">9</span> Tomás Ibarra</li>
+        <li class="player-card"><span class="num">11</span> Noah Bennett</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Riverside FC. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Back to homepage</a></li>
+        <li><a href="login.html">Member login</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

@@ -42,6 +42,9 @@ By the end of this session you will be able to:
 - Verify your own code with `console.assert` and read the console output.
 - Load your own JavaScript from your own page and run it in the browser
   dev tools console.
+- Write pure **form-validation** functions (a well-formed email, a strong-enough
+  password) and combine them — the console-only bridge to authentication in
+  Block II.
 
 ---
 
@@ -211,15 +214,69 @@ console.assert(isPalindrome("hello") === false, "isPalindrome false case");
 failed" message when it doesn't — so a correct `exercises.js` shows only
 the `fizzBuzz(15)` output, nothing else.
 
-### 4.4 Part 2 deliverable
+### 4.4 Login form validation — the bridge to Block II
 
-- `exercises.js` in the same repo as your `index.html`, linked from it
-  with a `<script src="exercises.js" defer></script>` tag.
-- The four functions implemented, with the test block above all green.
-- At least one function run in the console with real data from your own
-  page.
-- Both partners can point to any line of `exercises.js` and explain what
-  it does — the Session 3 pairing rule still applies.
+Your Session 3 site has a **login page** with an email field and a password
+field. You can't read those fields from JavaScript yet — that's the DOM, in
+Session 10 — but you *can* write and test the **validation logic** a real login
+needs. These are pure functions: strings in, `true`/`false` (or a small result
+object) out. No page, no DOM.
+
+Implement three validators in `exercises.js`:
+
+```javascript
+// validateEmail — a basic shape check: no spaces, one "@" with text before it,
+// and a "." after the "@" with text on both sides. Return true/false.
+function validateEmail(email) {
+  // your logic here
+}
+
+// validatePassword — at least 8 characters, containing at least one letter
+// AND at least one digit. Return true/false.
+function validatePassword(password) {
+  // your logic here
+}
+
+// validateLoginForm — combine the two. Return an object:
+//   { valid: true,  errors: [] }                       when both pass, or
+//   { valid: false, errors: ["...", "..."] }           listing what failed.
+function validateLoginForm(email, password) {
+  // your logic here
+}
+```
+
+Load `exercises.js` from your **login page** too (the same one-line
+`<script src="exercises.js" defer></script>` tag), so opening the login page and
+pressing F12 runs these checks in the console. Verify with:
+
+```javascript
+console.assert(validateEmail("fan@riverside.fc") === true, "email valid");
+console.assert(validateEmail("fan@riversidefc") === false, "email needs a dot");
+console.assert(validateEmail("fanriverside.fc") === false, "email needs an @");
+
+console.assert(validatePassword("Season2026") === true, "password ok");
+console.assert(validatePassword("short1") === false, "password too short");
+console.assert(validatePassword("allletters") === false, "password needs a digit");
+
+console.assert(validateLoginForm("fan@riverside.fc", "Season2026").valid === true, "form valid");
+console.assert(validateLoginForm("nope", "x").errors.length === 2, "form reports both errors");
+```
+
+> **Why this matters:** in Block II you build real authentication. The server has
+> the final say on whether a login is valid, but checking the obvious things in
+> the browser first — a well-formed email, a long-enough password — is exactly
+> this code. You are writing the front-end half of auth now; Block II adds the
+> server, and Sessions 10–11 add the wiring that reads these values off the form.
+
+### 4.5 Part 2 deliverable
+
+- `exercises.js` in the same repo as your `index.html`, linked from it (and from
+  your `login.html`) with a `<script src="exercises.js" defer></script>` tag.
+- The three exercise functions **and** the three login validators implemented,
+  with every test block above green (zero assertion failures).
+- At least one function run in the console with real data from your own page.
+- Both partners can point to any line of `exercises.js` and explain what it does —
+  the Session 3 pairing rule still applies.
 
 ---
 
@@ -233,13 +290,17 @@ the `fizzBuzz(15)` output, nothing else.
 - [ ] Every warm-up *returns* its value — none of them just `console.log`s
 - [ ] Both partners can explain declaration vs expression vs arrow
 
-**Part 2 (your own page):**
+**Part 2 (your own site):**
 - [ ] `exercises.js` contains `fizzBuzz`, `findMax`, `isPalindrome` + at
       least one arrow refactor
 - [ ] `findMax` uses a loop — no `Math.max`
 - [ ] `isPalindrome` ignores case, spaces, and punctuation
-- [ ] `index.html` changed by exactly one line: the `<script>` tag
-- [ ] Test block runs with zero assertion failures
+- [ ] `validateEmail`, `validatePassword`, and `validateLoginForm` implemented
+      as pure functions (no DOM)
+- [ ] `validateLoginForm` returns `{ valid, errors }` with a message per failure
+- [ ] `index.html` changed by exactly one line: the `<script>` tag; `login.html`
+      loads the same script
+- [ ] Every test block runs with zero assertion failures
 - [ ] At least one function run on data from your own page
 - [ ] Both partners can explain every line of `exercises.js`
 

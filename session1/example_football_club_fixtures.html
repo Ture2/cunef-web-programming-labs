@@ -1,0 +1,99 @@
+<!--
+  Example page for Session 3 Lab — Part 2 (multi-page site: Fixtures)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+
+  Topic: local football club — "Fixtures & Results" page
+  Purpose: reference example only — a dedicated page in the multi-page
+  Riverside FC site. It shows how href turns a set of separate .html files
+  into one navigable site. Structure only, no CSS, no JavaScript.
+  Do not copy directly for your own submission; choose your own topic.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside FC — Fixtures &amp; Results</title>
+</head>
+<body>
+
+  <header>
+    <h1>Riverside FC — Fixtures &amp; Results</h1>
+    <p>Every match this season, home and away</p>
+    <nav>
+      <ul>
+        <li><a href="example_football_club.html">Home</a></li>
+        <li><a href="example_football_club_fixtures.html">Fixtures</a></li>
+        <li><a href="example_football_club_squad.html">Squad</a></li>
+        <li><a href="example_football_club_tickets.html">Tickets</a></li>
+        <li><a href="example_football_club_login.html"><svg class="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="upcoming">
+      <h2>Upcoming Fixtures</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Home</th>
+            <th>Away</th>
+            <th>Venue</th>
+            <th>Kick-off</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sat 12 Sep</td>
+            <td>Riverside FC</td>
+            <td>Millbrook United</td>
+            <td>Home</td>
+            <td>15:00</td>
+          </tr>
+          <tr>
+            <td>Sat 19 Sep</td>
+            <td>Oakfield Rovers</td>
+            <td>Riverside FC</td>
+            <td>Away</td>
+            <td>15:00</td>
+          </tr>
+          <tr>
+            <td>Sat 26 Sep</td>
+            <td>Riverside FC</td>
+            <td>Castlegate Athletic</td>
+            <td>Home</td>
+            <td>15:00</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Buy your seat on the <a href="example_football_club_tickets.html">tickets
+        page</a> before the next home game.
+      </p>
+    </section>
+
+    <section id="results">
+      <h2>Recent Results</h2>
+      <ul>
+        <li>Sat 5 Sep — Riverside FC <strong>2</strong>–<strong>1</strong> Ashford Town (Home)</li>
+        <li>Sat 29 Aug — Hillcrest FC <strong>0</strong>–<strong>3</strong> Riverside FC (Away)</li>
+        <li>Sat 22 Aug — Riverside FC <strong>1</strong>–<strong>1</strong> Dunmore City (Home)</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Riverside FC. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="example_football_club.html">Back to homepage</a></li>
+        <li><a href="example_football_club_login.html">Member login</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

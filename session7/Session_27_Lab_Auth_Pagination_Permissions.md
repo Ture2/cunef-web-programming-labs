@@ -207,6 +207,33 @@ with `new Pool({ connectionString: process.env.DATABASE_URL })`.
 - Session 22 lab (`tasksModel`, the injectable-db pattern, `findByOwner`).
 - Session 18 lab (the CRUD contract and status codes you are hardening).
 
+## Worked example — the Riverside FC secured API (read-only)
+
+> **Nothing to build here.** Read it to see auth, pagination, and permissions on
+> a complete app you already know.
+
+The **`riverside-example/`** folder is this capstone applied to the Riverside FC
+API: JWT login (bcrypt), Zod validation, `?limit=&offset=` pagination, and a
+two-layer permission model —
+
+- **role**: only an **admin** may create/update/delete fixtures and squad players
+  (a member gets `403`);
+- **ownership**: a **member** only ever sees and manages **their own** tickets.
+
+It runs on an in-memory fake db with two seeded logins, and ships an end-to-end
+check you can run with no database:
+
+```bash
+cd riverside-example
+npm install
+node check.js      # 401 without a token, 403 across roles, ownership, pagination
+```
+
+See `riverside-example/README.md` for the seeded credentials and the full
+endpoint/permission table.
+
+---
+
 ## 10. Reference reading
 
 - jsonwebtoken — *sign / verify* (payload, `expiresIn`):

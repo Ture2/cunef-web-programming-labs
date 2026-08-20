@@ -218,6 +218,29 @@ able to explain every line of it.
 
 ---
 
+## Worked example — the Riverside FC data layer (read-only)
+
+> **Nothing to build here.** This is a reference you can read to see the
+> `models/` seam applied to the football app you already know.
+
+The **`riverside-example/`** folder in this lab is the Session 18 Riverside FC
+API moved onto a real relational schema — the same step you are practising with
+`tasks`, applied to **users, squad players, fixtures, and tickets**:
+
+- `schema.sql` — four tables (`tickets` has two foreign keys: fixture + user)
+- `src/models/*` — one parameterized, dependency-injected model per table
+- `src/db/fakeDb.js` + `selfTest.js` — run the models with **no database**:
+
+```bash
+cd riverside-example
+node selfTest.js
+```
+
+The Session 27 example adds a `password_hash` column, login, pagination, and
+permissions on top of these same models.
+
+---
+
 ## 10. How this wires into the app (looking ahead)
 
 The Session 18 controller called an array; now it calls this model:

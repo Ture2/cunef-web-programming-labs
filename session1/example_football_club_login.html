@@ -1,0 +1,107 @@
+<!--
+  Example page for Session 3 Lab — Part 2 (multi-page site: Login)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+
+  Topic: local football club — "Member Login" page
+  Purpose: reference example only — the login page for the multi-page
+  Riverside FC site. It introduces a semantic HTML <form> with <label>s and
+  typed <input>s. This is the SAME page you will style in Session 6 and give
+  validation logic in Session 9 — and the starting point for real
+  authentication in Block II.
+
+  IMPORTANT: in Block I this form is front-end only. It has no action, sends
+  nothing, and logs nobody in. Real authentication is built in Block II.
+  Structure only here — no CSS, no JavaScript.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riverside FC — Member Login</title>
+</head>
+<body>
+
+  <header>
+    <h1>Riverside FC — Member Login</h1>
+    <p>Sign in to manage your season pass and tickets</p>
+    <nav>
+      <ul>
+        <li><a href="example_football_club.html">Home</a></li>
+        <li><a href="example_football_club_fixtures.html">Fixtures</a></li>
+        <li><a href="example_football_club_squad.html">Squad</a></li>
+        <li><a href="example_football_club_tickets.html">Tickets</a></li>
+        <li><a href="example_football_club_login.html"><svg class="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="login">
+      <div class="login-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" role="img">
+          <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/>
+        </svg>
+      </div>
+      <h2>Sign in</h2>
+
+      <!--
+        A semantic login form. Every input has an associated <label> (linked
+        by matching for/id), a sensible type, and validation attributes.
+        There is no action attribute on purpose: in Block I this form does
+        not submit anywhere. Wiring it up is Block II's job.
+      -->
+      <form>
+        <p>
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email"
+                 placeholder="you@example.com" required>
+        </p>
+
+        <p>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password"
+                 minlength="8" required>
+        </p>
+
+        <p>
+          <label for="remember">
+            <input type="checkbox" id="remember" name="remember">
+            Keep me signed in
+          </label>
+        </p>
+
+        <p>
+          <button type="submit">Sign in</button>
+        </p>
+      </form>
+
+      <p>
+        Not a member yet? Tickets are open to everyone on the
+        <a href="example_football_club_tickets.html">tickets page</a>.
+      </p>
+    </section>
+
+    <aside>
+      <h2>Heads up</h2>
+      <p>
+        This login is a front-end placeholder for now — it doesn't send your
+        details anywhere. Real sign-in (checking your password on a server)
+        is built in <strong>Block II</strong>.
+      </p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Riverside FC. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="example_football_club.html">Back to homepage</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

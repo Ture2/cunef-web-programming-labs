@@ -35,6 +35,10 @@ By the end of this session you will be able to:
   column on narrow screens.
 - Style spacing, borders, and typography using selectors of the correct
   specificity — not `!important`, not inline `style=""`.
+- **Reuse a single stylesheet across every page of a multi-page site**, so the
+  header, nav, and footer look identical everywhere.
+- **Style an HTML form** — labels, text inputs, and a submit button — into a
+  clean, usable sign-in card.
 
 ---
 
@@ -81,36 +85,64 @@ page before you move to the next:
 
 ---
 
-## 4. Part 2 — Style your own Session 3 page
+## 4. Part 2 — Style your own Session 3 site
 
-Now open the `index.html` your pair built in the Session 3 lab — the semantic
-skeleton for the topic you chose. It has never had any CSS. That changes now.
+Now open the pages your pair built in the Session 3 lab — the semantic skeletons
+for the topic you chose, including the **multi-page site** (homepage plus its
+dedicated pages and the login page). They have never had any CSS. That changes now.
 
-### 4.1 What to do
+### 4.1 One stylesheet for the whole site
+
+Create **one** `styles.css` and link it from **every** page with the same
+`<link rel="stylesheet" href="styles.css">`. Because the shared `<header>`, `<nav>`,
+and `<footer>` are (almost) identical markup on every page, a single stylesheet
+styles them everywhere at once — change the nav once, and all pages update. This is
+the whole point of an external stylesheet, and exactly how Practice 1 will be
+graded in Block II.
+
+### 4.2 What to do
 
 Apply the same technique set from Part 1, adapted to your own content:
 
 - The same `box-sizing: border-box` reset.
-- Your `<header>` and its `<nav>` laid out with Flexbox.
-- Your `<main>` region laid out with Grid **if** it has a sidebar-like
-  structure (an `<aside>`), or with Flexbox if it's closer to a single
-  stacked column of sections — the right tool depends on your own page's
-  shape, and that choice is part of the exercise.
-- Any repeating content (news items, squad list, product cards, posts —
-  whatever your topic produced in Session 3) styled consistently as cards or
-  list rows, using real box-model spacing.
-- At least one responsive breakpoint that meaningfully changes the layout
-  on a narrow screen, not just font sizes.
+- Your `<header>` and its `<nav>` laid out with Flexbox — the nav bar looks the
+  same on every page.
+- Your homepage `<main>` laid out with Grid **if** it has a sidebar-like structure
+  (an `<aside>`), or with Flexbox if it's closer to a single stacked column — the
+  right tool depends on your page's shape, and that choice is part of the exercise.
+- Your dedicated pages (fixtures/squad/tickets or your topic's equivalents) styled
+  consistently: repeating content (a results table, a grid of cards, a price list)
+  laid out with real box-model spacing.
+- At least one responsive breakpoint that meaningfully changes a layout on a narrow
+  screen, not just font sizes.
 
-### 4.2 Part 2 deliverable
+### 4.3 Style the login form
 
-- A new `styles.css` in the same repo as your Session 3 `index.html`, linked
-  from it.
-- The page should be recognizably the same content as Session 3 — same
-  HTML, same topic — now laid out and styled instead of a plain unstyled
-  document.
-- Both partners should be able to point to the stylesheet and explain which
-  rule does what — pairing rules from Session 3 still apply.
+Your login page has a `<form>` — the first one in the course. Give it a clean,
+centered sign-in card:
+
+- Constrain the form to a comfortable reading width (e.g. `max-width: 420px;
+  margin: 0 auto;`) so it isn't a full-width sprawl.
+- Make each `<label>` a block above its input, and each text input full-width with
+  padding, a border, and a `border-radius`.
+- Add a visible **focus** style (`input:focus { … }`) so the active field stands
+  out — an accessibility win, not just decoration.
+- Style the submit `<button>` with your palette, full-width, with a hover state and
+  `cursor: pointer`.
+
+Remember the form still does nothing when clicked — that's expected. Styling it now
+means it is ready for the validation logic you add in Session 9 and the real auth in
+Block II.
+
+### 4.4 Part 2 deliverable
+
+- A single `styles.css` in the same repo as your Session 3 pages, linked from
+  **every** page.
+- The site should be recognizably the same content and structure as Session 3 —
+  same HTML, same topic — now laid out and styled, with a consistent nav/header/
+  footer across all pages and a styled login form.
+- Both partners should be able to point to the stylesheet and explain which rule
+  does what — pairing rules from Session 3 still apply.
 
 ---
 
@@ -126,11 +158,14 @@ Apply the same technique set from Part 1, adapted to your own content:
 - [ ] A `@media (max-width: 768px)` breakpoint collapses the grid to one column
 - [ ] No inline `style=""` attributes, no `!important`
 
-**Part 2 (your own page):**
+**Part 2 (your own site):**
 - [ ] Same reset applied
+- [ ] One `styles.css` linked from every page; nav/header/footer identical across pages
 - [ ] Header/nav styled with Flexbox
 - [ ] Main content area uses Grid or Flexbox — whichever fits your structure
-- [ ] Repeating content styled consistently
+- [ ] Repeating content (table, card grid, price list) styled consistently
+- [ ] Login form styled: centered card, block labels, full-width inputs, a focus
+      style, and a styled submit button
 - [ ] At least one real responsive breakpoint
 - [ ] Both partners can explain every rule in the stylesheet
 

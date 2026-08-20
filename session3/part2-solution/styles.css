@@ -1,5 +1,5 @@
 /*
-  styles.css — Session 6 Lab, Part 2 (REFERENCE SOLUTION)
+  styles.css — Session 9 Lab, Part 2 (REFERENCE SOLUTION)
   Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
 
   REFERENCE ONLY — do not copy for your own submission.
@@ -100,6 +100,11 @@ a {
   text-decoration: underline;
 }
 
+.nav-user-icon {
+  vertical-align: -0.15em;
+  margin-right: 0.25rem;
+}
+
 /* ---------------------------------------------------------------------
    4. PAGE LAYOUT (Grid)
    <main> becomes a two-column grid: the news/fixtures/squad sections in
@@ -109,19 +114,23 @@ a {
 --------------------------------------------------------------------- */
 
 main {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-main > section {
+/* Homepage only: two-column grid (content sections + Club Shop sidebar). */
+main.home-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+main.home-grid > section {
   grid-column: 1;
 }
 
-main > .shop {
+main.home-grid > .shop {
   grid-column: 2;
   grid-row: 1 / -1;
   align-self: start;
@@ -173,14 +182,19 @@ img {
 --------------------------------------------------------------------- */
 
 @media (max-width: 768px) {
-  main {
+  main.home-grid {
     grid-template-columns: 1fr;
   }
 
-  main > section,
-  main > .shop {
+  main.home-grid > section,
+  main.home-grid > .shop {
     grid-column: 1;
     grid-row: auto;
+  }
+
+  .squad-grid,
+  .ticket-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -209,4 +223,196 @@ img {
 
 .site-footer a {
   color: #ffffff;
+}
+
+/* ---------------------------------------------------------------------
+   9. SUB-PAGE HELPERS
+   The dedicated pages (fixtures, squad, tickets, login) use a plain
+   single-column <main>. A few shared touches keep their sections looking
+   like the homepage cards.
+--------------------------------------------------------------------- */
+
+main > section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* The homepage grid opts out of the boxed look for its bare sections. */
+main.home-grid > section {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------
+   10. FIXTURES TABLE
+   A full-width table with a club-red header row and zebra striping.
+--------------------------------------------------------------------- */
+
+.fixtures-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.fixtures-table th,
+.fixtures-table td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.fixtures-table thead th {
+  background: var(--club-red);
+  color: #ffffff;
+}
+
+.fixtures-table tbody tr:nth-child(even) {
+  background: var(--tint);
+}
+
+/* ---------------------------------------------------------------------
+   11. SQUAD GRID
+   A responsive grid of player cards, auto-fitting as many columns as fit.
+--------------------------------------------------------------------- */
+
+.squad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.player-card {
+  background: var(--tint);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--club-red);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+}
+
+.player-card .num {
+  display: inline-block;
+  min-width: 1.6rem;
+  font-weight: 700;
+  color: var(--club-red);
+}
+
+/* ---------------------------------------------------------------------
+   12. TICKET PRICING CARDS
+   A row of price cards that wrap to a single column on narrow screens.
+--------------------------------------------------------------------- */
+
+.ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.price-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--club-red);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.price-card .price {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--club-red);
+  margin: 0.5rem 0;
+}
+
+/* ---------------------------------------------------------------------
+   13. LOGIN FORM
+   A narrow, centered card. Labels stack above full-width inputs; the
+   submit button uses the club-red palette.
+--------------------------------------------------------------------- */
+
+.login-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.login-card h2 {
+  text-align: center;
+}
+
+/* Circular user-avatar badge above the sign-in heading. */
+.login-avatar {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: var(--club-red);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card form p {
+  margin: 0 0 1rem;
+}
+
+.login-card label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.login-card input[type="email"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #c7ccd1;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: var(--club-red);
+  box-shadow: 0 0 0 3px rgba(164, 19, 60, 0.15);
+}
+
+.login-card .remember label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+}
+
+.login-card button[type="submit"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: var(--club-red);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-card button[type="submit"]:hover {
+  background: var(--club-red-dark);
+}
+
+.note {
+  background: #fff4e6;
+  border-left: 4px solid #d9822b;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
 }

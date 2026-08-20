@@ -11,9 +11,14 @@
   NOT touch the DOM (no window/document). Reading values off the page is
   Session 10's job, so the "real data" arrays below are typed by hand.
 
-  Run with: node exercises.js   (or open index.html and press F12)
-  Expected output: the fizzBuzz(15) sequence plus the labelled real-data
-  lines, and NO "Assertion failed" messages.
+  It is loaded (with <script src="exercises.js" defer>) on BOTH index.html
+  and login.html, and adds three login validators (validateEmail,
+  validatePassword, validateLoginForm) as the console-only bridge to the
+  authentication you will build in Block II.
+
+  Run with: node exercises.js   (or open index.html / login.html and press F12)
+  Expected output: the fizzBuzz(15) sequence, the labelled real-data lines,
+  the two login-check demo lines, and NO "Assertion failed" messages.
 */
 
 // ---- The four exercise functions (§4.2) ----
@@ -97,3 +102,74 @@ console.log("Highest squad number on the page:", findMax(squadNumbers));
 console.log('Is "Riverside FC" a palindrome?', isPalindrome("Riverside FC"));
 // ...but a level scoreline chant reads the same both ways ("1 00 1").
 console.log('Is the "1 00 1" scoreline chant a palindrome?', isPalindromeArrow("1 00 1"));
+
+// ============================================================
+// Login form validation — the bridge to Block II authentication
+// ============================================================
+// These are PURE functions: they take plain strings and return a boolean or a
+// small result object. They do NOT read the form or touch the page — reading
+// values off <input> elements is Session 10's job (the DOM). In Block II you
+// will run this same kind of check before sending a login request to a server.
+
+// validateEmail: a basic shape check — no spaces, one "@" with text before it,
+// and a "." after the "@" with text on both sides. Deliberately not
+// RFC-perfect (real apps let the server have the final say); just enough to
+// catch obvious typos before submitting.
+function validateEmail(email) {
+  if (typeof email !== "string") return false;
+  const value = email.trim();
+  const at = value.indexOf("@");
+  const dot = value.indexOf(".", at);
+  return (
+    !value.includes(" ") &&
+    at > 0 &&                 // something before the @
+    dot > at + 1 &&           // a dot somewhere after the @
+    dot < value.length - 1    // something after the dot
+  );
+}
+
+// validatePassword: at least 8 characters, with at least one letter and one
+// digit. A char is a letter when its upper- and lower-case forms differ.
+function validatePassword(password) {
+  if (typeof password !== "string" || password.length < 8) return false;
+  let hasLetter = false;
+  let hasDigit = false;
+  for (const ch of password) {
+    if (ch >= "0" && ch <= "9") hasDigit = true;
+    else if (ch.toLowerCase() !== ch.toUpperCase()) hasLetter = true;
+  }
+  return hasLetter && hasDigit;
+}
+
+// validateLoginForm: combines both checks and returns { valid, errors }, where
+// errors is a list of human-readable messages — the shape a real UI would use
+// to show a message next to each field once we reach the DOM in Session 10.
+function validateLoginForm(email, password) {
+  const errors = [];
+  if (!validateEmail(email)) {
+    errors.push("Enter a valid email address.");
+  }
+  if (!validatePassword(password)) {
+    errors.push("Password must be 8+ characters with a letter and a number.");
+  }
+  return { valid: errors.length === 0, errors };
+}
+
+// ---- Login validator tests ----
+console.assert(validateEmail("fan@riverside.fc") === true, "email valid");
+console.assert(validateEmail("fan@riversidefc") === false, "email needs a dot");
+console.assert(validateEmail("fanriverside.fc") === false, "email needs an @");
+console.assert(validateEmail("fan @riverside.fc") === false, "email no spaces");
+
+console.assert(validatePassword("Season2026") === true, "password ok");
+console.assert(validatePassword("short1") === false, "password too short");
+console.assert(validatePassword("allletters") === false, "password needs a digit");
+console.assert(validatePassword("12345678") === false, "password needs a letter");
+
+console.assert(validateLoginForm("fan@riverside.fc", "Season2026").valid === true, "form valid");
+console.assert(validateLoginForm("nope", "x").valid === false, "form invalid");
+console.assert(validateLoginForm("nope", "x").errors.length === 2, "form reports both errors");
+
+// Demo: exactly what a real sign-in would check before calling the server.
+console.log("Login check (good):", validateLoginForm("fan@riverside.fc", "Season2026"));
+console.log("Login check (bad):", validateLoginForm("bad-email", "weak"));

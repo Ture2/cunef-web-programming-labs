@@ -203,6 +203,33 @@ able to explain every line of it.
 
 ---
 
+## Worked example — the Riverside FC API (read-only)
+
+> **You do not need to build or hand in anything from this section.** It is a
+> fuller reference you can read to see today's pattern applied end-to-end to an
+> app you already know from Block I.
+
+Alongside `solutions_example.js` there is a **`riverside-example/`** folder: a
+small, runnable CRUD API for the **Riverside FC** site, built with the same
+`routes → controllers → data` structure as this lab — but with three real
+resources instead of `tasks`:
+
+- `GET/POST/PUT/DELETE /fixtures` and `/squad` — full CRUD
+- `GET/POST/DELETE /tickets` — buy, list, and refund
+
+Read `riverside-example/README.md` for the endpoint map, or run it:
+
+```bash
+cd riverside-example
+npm install
+npm start        # http://localhost:3000
+```
+
+The Session 22 and 27 examples evolve this exact app — first onto a real
+database, then behind authentication and permissions — so it is worth a look now.
+
+---
+
 ## 10. Stretch goals (optional)
 
 - Add `PATCH /tasks/:id` for a **partial** update (change only the fields the

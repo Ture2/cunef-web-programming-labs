@@ -2,7 +2,12 @@
   Example skeleton for Session 3 Lab — Structuring a Page
   Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
 
-  Topic: local football club homepage
+  Topic: local football club homepage — the HUB of a small multi-page site.
+  Sibling pages (all in this folder, linked via href in the <nav>):
+    · example_football_club_fixtures.html  — Fixtures & Results
+    · example_football_club_squad.html     — First Team Squad
+    · example_football_club_tickets.html   — Tickets
+    · example_football_club_login.html     — Member Login (Block II auth bridge)
   Purpose: reference example only — structure-first, no CSS, no JavaScript.
   Do not copy directly for your own submission; choose your own topic.
 -->
@@ -19,10 +24,11 @@
     <p>Founded 1974 · Home of Riverside Football Club</p>
     <nav>
       <ul>
-        <li><a href="#news">News</a></li>
-        <li><a href="#fixtures">Fixtures</a></li>
-        <li><a href="#squad">Squad</a></li>
-        <li><a href="#tickets" title="Buy match tickets online">Tickets</a></li>
+        <li><a href="example_football_club.html">Home</a></li>
+        <li><a href="example_football_club_fixtures.html">Fixtures</a></li>
+        <li><a href="example_football_club_squad.html">Squad</a></li>
+        <li><a href="example_football_club_tickets.html" title="Buy match tickets online">Tickets</a></li>
+        <li><a href="example_football_club_login.html"><svg class="nav-user-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg> Login</a></li>
       </ul>
     </nav>
   </header>
@@ -57,27 +63,27 @@
     </section>
 
     <section id="fixtures">
-      <h2>Upcoming Fixtures</h2>
-      <ul>
-        <li>Sat 12 Sep — Riverside FC <strong>vs</strong> Millbrook United (Home, 15:00)</li>
-        <li>Sat 19 Sep — Oakfield Rovers <strong>vs</strong> Riverside FC (Away, 15:00)</li>
-        <li>Sat 26 Sep — Riverside FC <strong>vs</strong> Castlegate Athletic (Home, 15:00)</li>
-      </ul>
+      <h2>Next Fixture</h2>
       <p>
-        See the <a href="/fixtures/full-season">full season fixture list</a> for
-        every match this year.
+        <strong>Sat 12 Sep</strong> — Riverside FC <strong>vs</strong> Millbrook
+        United (Home, 15:00).
+      </p>
+      <p>
+        See the <a href="example_football_club_fixtures.html">full fixtures &amp;
+        results page</a> for every match this season.
       </p>
     </section>
 
     <section id="squad">
-      <h2>First Team Squad</h2>
-      <ol>
-        <li>Elena Ruiz — Goalkeeper</li>
-        <li>Marcus Webb — Defender</li>
-        <li>Sofia Marsh — Midfielder</li>
-        <li>Tomás Ibarra — Forward</li>
-      </ol>
-      <p>View the <a href="/squad/full-roster">full roster</a> with player profiles.</p>
+      <h2>The Squad</h2>
+      <p>
+        Captain <strong>Sofia Marsh</strong> leads a first-team squad drawn from
+        across the region.
+      </p>
+      <p>
+        View the <a href="example_football_club_squad.html">full squad page</a>
+        with every player by position.
+      </p>
     </section>
 
     <aside>
@@ -97,6 +103,7 @@
       <ul>
         <li><a href="/contact">Contact Us</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="example_football_club_login.html">Member login</a></li>
       </ul>
     </nav>
   </footer>
