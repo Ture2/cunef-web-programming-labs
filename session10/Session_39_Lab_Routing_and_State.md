@@ -220,6 +220,46 @@ JSX — and be able to explain every line of it.
 
 ---
 
+## Worked example — Riverside FC
+
+`lab-sessions/session10/riverside-example/` is a read-only reference
+implementation of this session's teaching goals using the Riverside FC
+through-line. It adds `react-router-dom` SPA routing, a real JWT login
+against the Block II API, and a protected Tickets page.
+
+**App routes:**
+
+| Route | Access | What it shows |
+| --- | --- | --- |
+| `/` | Public | Home with nav links |
+| `/fixtures` | Public | Fixtures list (fetch + filter) |
+| `/squad` | Public | Squad grid (fetch) |
+| `/login` | Public | Login form → `POST /api/auth/login` |
+| `/tickets` | Protected | Own tickets + buy form (JWT required) |
+
+**Key files:**
+
+| File | Teaching point |
+| --- | --- |
+| `src/AuthContext.jsx` | `createContext` + `useContext` + real JWT login/logout |
+| `src/Protected.jsx` | `<Navigate replace state={{ from }}>` guard |
+| `src/SiteHeader.jsx` | `<NavLink>` active styling; conditional Login/Logout |
+| `src/pages/Login.jsx` | `useNavigate` + redirect-after-login via `location.state.from` |
+| `src/pages/Tickets.jsx` | Token from context; fetch with bearer header; buy form |
+
+**Prerequisites:** start the Block II backend first:
+
+```bash
+cd lab-sessions/session7/riverside-example
+npm install && npm start   # :3000
+```
+
+Demo logins: `ana@example.com` / `password1` (member) — `coach@riverside.fc` / `adminpass1` (admin).
+
+Run `npm install && npm run dev` inside this folder, then open <http://localhost:5173>.
+
+---
+
 ## 8. Reference reading
 
 - React Router — *Tutorial*: <https://reactrouter.com/en/main/start/tutorial>

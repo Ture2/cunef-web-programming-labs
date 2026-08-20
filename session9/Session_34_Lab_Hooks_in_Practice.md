@@ -203,6 +203,32 @@ JSX — and be able to explain every line of it.
 
 ---
 
+## Worked example — Riverside FC
+
+`lab-sessions/session9/riverside-example/` is a read-only reference
+implementation of this session's teaching goals using the Riverside FC
+through-line.
+
+**What it contains:**
+
+| File | What it demonstrates |
+| --- | --- |
+| `src/api.js` | Fetch helpers — separates "how to call the network" from "what to do with the data" |
+| `src/FixtureList.jsx` | Three-state pattern (`data / loading / error`) + `useEffect(fn, [])` + Refresh button |
+| `src/SquadList.jsx` | Same three-state pattern for a different endpoint |
+| `vite.config.js` | Dev proxy `/api` → `http://localhost:3000` (avoids CORS) |
+
+**Prerequisites:** start the Block II backend first:
+
+```bash
+cd lab-sessions/session7/riverside-example
+npm install && npm start   # :3000
+```
+
+Then run `npm install && npm run dev` inside this folder.
+
+---
+
 ## 8. Reference reading
 
 - React — *Synchronizing with Effects*: <https://react.dev/learn/synchronizing-with-effects>

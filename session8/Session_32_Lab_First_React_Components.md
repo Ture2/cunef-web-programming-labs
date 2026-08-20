@@ -213,6 +213,29 @@ JSX — and be able to explain every line of it.
 
 ---
 
+## Worked example — Riverside FC
+
+`lab-sessions/session8/riverside-example/` is a read-only reference
+implementation of this session's teaching goals applied to the Riverside FC
+through-line (the same club from your Session 3 HTML lab).
+
+**What it contains:**
+
+| File | What it demonstrates |
+| --- | --- |
+| `src/data.js` | Hard-coded fixtures and squad data (no network) |
+| `src/SiteHeader.jsx` | Stateless presentational component |
+| `src/FixtureCard.jsx` + `src/FixtureList.jsx` | Props, `.map()` + `key`, one `useState` venue filter |
+| `src/PlayerCard.jsx` + `src/SquadList.jsx` | Props flowing top-down; component decomposition |
+| `src/App.jsx` | Root component wiring everything together |
+
+Run it with `npm install && npm run dev` inside that folder (no backend
+needed — data is hard-coded). Browse the source to see how the teaching
+concepts connect to a recognisable domain before applying them to your own
+topic.
+
+---
+
 ## 8. Reference reading
 
 - React — *Your First Component*: <https://react.dev/learn/your-first-component>
