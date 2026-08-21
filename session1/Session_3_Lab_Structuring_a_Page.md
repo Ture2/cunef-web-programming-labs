@@ -146,13 +146,15 @@ Your `index.html` must include, at minimum:
 
 ## 9. Reference example
 
-An example skeleton for a **local football club homepage** is provided alongside
-this brief (`example_football_club.html`). It satisfies every item in the
-checklist above and is deliberately unstyled — open it in a browser to see what a
-full-credit *structure-only* submission looks like before you start your own.
+An example skeleton for a **local football club homepage** is provided in the
+private solutions folder (`../../solutions/session1/example_football_club.html`).
+It satisfies every item in the checklist above and is deliberately unstyled —
+open it in a browser to see what a full-credit *structure-only* submission looks
+like before you start your own.
 
 That homepage is the hub of a small **multi-page site** used in Part 2 below. The
-sibling pages live in the same folder and are all reachable from the shared `<nav>`:
+sibling pages live in the same solutions folder
+(`../../solutions/session1/`) and are all reachable from the shared `<nav>`:
 
 - `example_football_club_fixtures.html` — a Fixtures & Results page
 - `example_football_club_squad.html` — a First Team Squad page
@@ -273,8 +275,9 @@ Add a `login.html` page whose `<main>` contains a semantic sign-in **form**:
 - [ ] Every file passes the W3C Markup Validator with zero errors
 - [ ] Still no CSS, no JavaScript, no inline `style=""`
 
-> **Reference:** the `example_football_club_*.html` files (homepage + fixtures,
-> squad, tickets, and login) together show exactly this shared-nav, multi-page
-> pattern, and the login page shows the expected form structure.
+> **Reference:** the `example_football_club_*.html` files in
+> `../../solutions/session1/` (homepage + fixtures, squad, tickets, and login)
+> together show exactly this shared-nav, multi-page pattern, and the login page
+> shows the expected form structure.
 
 

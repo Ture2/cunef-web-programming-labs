@@ -211,7 +211,7 @@ scale, with rails.
 ## 7. Reference solution
 
 A completed, working version of all three files (plus the Part 2 fetch)
-lives in `solutions_example.jsx` in this folder.
+lives in `../../solutions/session10/solutions_example.jsx`.
 
 **REFERENCE ONLY — do not copy for your own submission.** Same role as
 `example_football_club.html` in the Session 3 lab: it shows the expected
@@ -222,7 +222,7 @@ JSX — and be able to explain every line of it.
 
 ## Worked example — Riverside FC
 
-`lab-sessions/session10/riverside-example/` is a read-only reference
+`../../solutions/session10/riverside-example/` is a read-only reference
 implementation of this session's teaching goals using the Riverside FC
 through-line. It adds `react-router-dom` SPA routing, a real JWT login
 against the Block II API, and a protected Tickets page.
@@ -252,7 +252,7 @@ against the Block II API, and a protected Tickets page.
 **Prerequisites:** start the Block II backend first:
 
 ```bash
-cd lab-sessions/session7/riverside-example
+cd ../../solutions/session7/riverside-example
 npm install && npm start   # :3000
 ```
 

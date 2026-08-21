@@ -24,9 +24,10 @@ Session 27 extends with authentication and pagination.
 
 > **No live database in class.** You do not need a running Postgres to complete
 > or run this lab. The model takes an injected `db`, and the reference solution
-> ships a tiny in-memory fake so `node solutions_example.js` runs green with
-> zero services. When you *do* have Postgres, you pass a real `pg` Pool instead
-> — nothing else changes.
+> (in `../../solutions/session6/`) ships a tiny in-memory fake so
+> `node ../../solutions/session6/solutions_example.js` runs green with zero
+> services. When you *do* have Postgres, you pass a real `pg` Pool instead —
+> nothing else changes.
 
 ---
 
@@ -161,11 +162,11 @@ not. The pairing rule still applies.
    from the starter, filling in the parameterized SQL. Keep `done` handling
    correct — `false` is a real value, not "missing" (that's what `COALESCE` and
    `?? null` are for).
-4. **Validate offline.** Run `node solutions_example.js` to see the reference
-   model pass its self-test against the fake pool, then make your own model pass
-   the same shape of checks. `findAll`, `findById` (hit + miss), `create`,
-   `update`, `remove` (hit + miss), and `findByOwner` with two different
-   offsets.
+4. **Validate offline.** Run `node ../../solutions/session6/solutions_example.js`
+   to see the reference model pass its self-test against the fake pool, then
+   make your own model pass the same shape of checks. `findAll`, `findById`
+   (hit + miss), `create`, `update`, `remove` (hit + miss), and `findByOwner`
+   with two different offsets.
 5. **Point it at real Postgres (optional, if available).** Swap the fake for
    `new Pool({ connectionString: process.env.DATABASE_URL })` and confirm the
    exact same model runs against your seeded database.
@@ -197,19 +198,20 @@ calls.
       `create`, `update`, `remove`, `findByOwner` (unchanged names).
 - [ ] `findById`/`update` return `null` when the id is missing; `remove`
       returns `true`/`false`.
-- [ ] `node solutions_example.js` runs green offline (no database needed).
+- [ ] `node ../../solutions/session6/solutions_example.js` runs green offline
+      (no database needed).
 - [ ] Both partners can explain any query and why `$1` prevents SQL injection.
 
 ---
 
 ## 9. Reference example
 
-A completed, working version lives in `solutions_example.js` in this folder. It
-is a **single self-contained runnable file**: the finished model, a tiny
+A completed, working version lives in `../../solutions/session6/solutions_example.js`.
+It is a **single self-contained runnable file**: the finished model, a tiny
 in-memory fake pool, and a self-test exercising every method (including
-pagination). Run it with `node solutions_example.js` — no database required.
-Comments inside map each part to `src/models/` and show how to point it at real
-Postgres via `DATABASE_URL`.
+pagination). Run it with `node ../../solutions/session6/solutions_example.js` —
+no database required. Comments inside map each part to `src/models/` and show
+how to point it at real Postgres via `DATABASE_URL`.
 
 **REFERENCE ONLY — do not copy for your own submission.** Same role as
 `example_football_club.html` in the Session 3 lab: it shows the expected shape
@@ -223,16 +225,17 @@ able to explain every line of it.
 > **Nothing to build here.** This is a reference you can read to see the
 > `models/` seam applied to the football app you already know.
 
-The **`riverside-example/`** folder in this lab is the Session 18 Riverside FC
-API moved onto a real relational schema — the same step you are practising with
-`tasks`, applied to **users, squad players, fixtures, and tickets**:
+The **`riverside-example/`** folder in `../../solutions/session6/` is the
+Session 18 Riverside FC API moved onto a real relational schema — the same step
+you are practising with `tasks`, applied to **users, squad players, fixtures,
+and tickets**:
 
 - `schema.sql` — four tables (`tickets` has two foreign keys: fixture + user)
 - `src/models/*` — one parameterized, dependency-injected model per table
 - `src/db/fakeDb.js` + `selfTest.js` — run the models with **no database**:
 
 ```bash
-cd riverside-example
+cd ../../solutions/session6/riverside-example
 node selfTest.js
 ```
 

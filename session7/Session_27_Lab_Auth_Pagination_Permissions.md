@@ -155,8 +155,9 @@ Every task the controller sends back goes through `toDTO` first.
    task compares `Number(task.user_id) !== Number(req.user.sub)` → 403. The list
    route clamps `page`/`limit`, computes `offset`, calls `findByOwner`, and
    returns `{ page, limit, items }` mapped through `toDTO`.
-7. **Run the self-test.** `node solutions_example.js` should print a green run
-   proving register/login/401/403/400/pagination all behave.
+7. **Run the self-test.** `node ../../solutions/session7/solutions_example.js`
+   should print a green run proving register/login/401/403/400/pagination all
+   behave.
 
 ## 7. Deliverable
 
@@ -182,14 +183,15 @@ security posture Practice 1 is graded against.
 
 ## 9. Reference example note
 
-`solutions_example.js` is **REFERENCE ONLY — do not copy**. It is a single
-self-contained runnable file that assembles the whole app (users + tasks models,
-auth controller, auth middleware, Zod validator, paginated owner-checked tasks
-controller) on top of the same in-memory fake pool from Session 22, then drives an
-in-process self-test with supertest. Run it with `node solutions_example.js` — no
-Postgres, no external services. The file's header comment maps each section back
-to the `src/` layout above and shows how to point the models at a real database
-with `new Pool({ connectionString: process.env.DATABASE_URL })`.
+`solutions_example.js` (in `../../solutions/session7/`) is **REFERENCE ONLY —
+do not copy**. It is a single self-contained runnable file that assembles the
+whole app (users + tasks models, auth controller, auth middleware, Zod
+validator, paginated owner-checked tasks controller) on top of the same
+in-memory fake pool from Session 22, then drives an in-process self-test with
+supertest. Run it with `node ../../solutions/session7/solutions_example.js` —
+no Postgres, no external services. The file's header comment maps each section
+back to the `src/` layout above and shows how to point the models at a real
+database with `new Pool({ connectionString: process.env.DATABASE_URL })`.
 
 ### Notes on dependencies and secrets
 
@@ -212,9 +214,9 @@ with `new Pool({ connectionString: process.env.DATABASE_URL })`.
 > **Nothing to build here.** Read it to see auth, pagination, and permissions on
 > a complete app you already know.
 
-The **`riverside-example/`** folder is this capstone applied to the Riverside FC
-API: JWT login (bcrypt), Zod validation, `?limit=&offset=` pagination, and a
-two-layer permission model —
+The **`riverside-example/`** folder (in `../../solutions/session7/`) is this
+capstone applied to the Riverside FC API: JWT login (bcrypt), Zod validation,
+`?limit=&offset=` pagination, and a two-layer permission model —
 
 - **role**: only an **admin** may create/update/delete fixtures and squad players
   (a member gets `403`);
@@ -224,7 +226,7 @@ It runs on an in-memory fake db with two seeded logins, and ships an end-to-end
 check you can run with no database:
 
 ```bash
-cd riverside-example
+cd ../../solutions/session7/riverside-example
 npm install
 node check.js      # 401 without a token, 403 across roles, ownership, pagination
 ```

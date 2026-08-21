@@ -213,10 +213,10 @@ This is the skeleton Practice 1 will grow into over the next three labs.
 
 ## 9. Reference example
 
-A completed, working version lives in `solutions_example.js` in this
-folder. It is a **single runnable file** that assembles the whole server
-so you can `node solutions_example.js` and `curl` it — comments inside map
-each section back to its `src/` file.
+A completed, working version lives in `../../solutions/session4/solutions_example.js`.
+It is a **single runnable file** that assembles the whole server
+so you can `node ../../solutions/session4/solutions_example.js` and `curl`
+it — comments inside map each section back to its `src/` file.
 
 **REFERENCE ONLY — do not copy for your own submission.** Same role as
 `example_football_club.html` in the Session 3 lab: it shows the expected

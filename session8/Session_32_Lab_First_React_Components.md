@@ -204,7 +204,7 @@ bigger surface.
 ## 7. Reference solution
 
 A completed, working version of all three files (plus the `useState`
-counter) lives in `solutions_example.jsx` in this folder.
+counter) lives in `../../solutions/session8/solutions_example.jsx`.
 
 **REFERENCE ONLY — do not copy for your own submission.** Same role as
 `example_football_club.html` in the Session 3 lab: it shows the expected
@@ -215,7 +215,7 @@ JSX — and be able to explain every line of it.
 
 ## Worked example — Riverside FC
 
-`lab-sessions/session8/riverside-example/` is a read-only reference implementation of this session's teaching goals. It ports the Block I Riverside FC pages (Session 3 HTML lab) into static React components, using hard-coded data that matches the Block II API seed exactly — so the very same app can switch to live data in Session 34 without any visible change.
+`../../solutions/session8/riverside-example/` is a read-only reference implementation of this session's teaching goals. It ports the Block I Riverside FC pages (Session 3 HTML lab) into static React components, using hard-coded data that matches the Block II API seed exactly — so the very same app can switch to live data in Session 34 without any visible change.
 
 **What it contains:**
 

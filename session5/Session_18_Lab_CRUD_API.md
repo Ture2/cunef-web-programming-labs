@@ -190,11 +190,11 @@ for the in-memory array.
 
 ## 9. Reference example
 
-A completed, working version lives in `solutions_example.js` in this folder.
+A completed, working version lives in `../../solutions/session5/solutions_example.js`.
 It is a **single runnable file** that assembles the whole CRUD app so you can
-`node solutions_example.js` and `curl` it, or run its built-in smoke test with
-`SELFTEST=1 node solutions_example.js`. Comments inside map each section back
-to its `src/` file.
+`node ../../solutions/session5/solutions_example.js` and `curl` it, or run its
+built-in smoke test with `SELFTEST=1 node ../../solutions/session5/solutions_example.js`.
+Comments inside map each section back to its `src/` file.
 
 **REFERENCE ONLY — do not copy for your own submission.** Same role as
 `example_football_club.html` in the Session 3 lab: it shows the expected shape
@@ -209,10 +209,10 @@ able to explain every line of it.
 > fuller reference you can read to see today's pattern applied end-to-end to an
 > app you already know from Block I.
 
-Alongside `solutions_example.js` there is a **`riverside-example/`** folder: a
-small, runnable CRUD API for the **Riverside FC** site, built with the same
-`routes → controllers → data` structure as this lab — but with three real
-resources instead of `tasks`:
+Alongside `solutions_example.js` there is a **`riverside-example/`** folder in
+`../../solutions/session5/`: a small, runnable CRUD API for the **Riverside FC**
+site, built with the same `routes → controllers → data` structure as this lab —
+but with three real resources instead of `tasks`:
 
 - `GET/POST/PUT/DELETE /fixtures` and `/squad` — full CRUD
 - `GET/POST/DELETE /tickets` — buy, list, and refund
@@ -220,7 +220,7 @@ resources instead of `tasks`:
 Read `riverside-example/README.md` for the endpoint map, or run it:
 
 ```bash
-cd riverside-example
+cd ../../solutions/session5/riverside-example
 npm install
 npm start        # http://localhost:3000
 ```
